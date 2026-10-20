@@ -6,6 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FatturaFacile)
+[![Telegram Community](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?logo=telegram&logoColor=white)](https://t.me/+sRauQINBDFQ5NjU0)
 [![Website](https://img.shields.io/badge/Website-fatturafacile.eu-emerald)](https://fatturafacile.eu)
 
 An open-source, modular invoicing ecosystem tailored for freelancers, small-to-medium businesses, and enterprises across Switzerland and Europe. Built with clean code practices, modern cross-platform stacks, and compliant with Swiss QR-Bill and European billing standards.
