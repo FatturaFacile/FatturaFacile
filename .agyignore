@@ -1,0 +1,83 @@
+# ==========================================
+# .agyignore - Antigravity Agent Ignore Rules
+# ==========================================
+
+# --- .NET & Visual Studio / Rider ---
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+*.DotSettings.user
+TestResults/
+coverage/
+*.trx
+
+# --- Package Managers & Lockfiles voluminosi ---
+node_modules/
+vendor/
+packages/
+*.lock
+package-lock.json
+composer.lock
+yarn.lock
+pnpm-lock.yaml
+
+# --- Web & Frontend Build Artifacts ---
+dist/
+build/
+.next/
+.nuxt/
+.output/
+.angular/cache/
+wwwroot/lib/
+
+# --- Mobile (Flutter / MAUI / Android / iOS) ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+android/.gradle/
+ios/Pods/
+ios/.symlinks/
+
+# --- Documenti, Media e Assets pesanti ---
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+*.pdf
+*.zip
+*.tar.gz
+*.7z
+*.mp4
+*.mp3
+*.wasm
+
+# --- Database & Cache locali ---
+*.sqlite
+*.sqlite3
+*.db
+*.log
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# --- File di sistema & Secrets ---
+.git/
+.svn/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.pem
+*.pfx
+*.cert

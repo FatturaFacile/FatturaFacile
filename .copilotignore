@@ -1,0 +1,34 @@
+# ==========================================
+# .copilotignore - Exclude context from Copilot
+# ==========================================
+
+# File generati e dipendenze
+node_modules/
+vendor/
+bin/
+obj/
+dist/
+build/
+
+# Lockfiles
+*.lock
+package-lock.json
+composer.lock
+
+# Asset multimediali e documentazione binaria
+*.pdf
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.zip
+
+# Dati e configurazioni private
+*.env
+*.env.*
+appsettings*.secrets.json
+*.pem
+*.pfx
+*.key
+*.sqlite
+*.db
