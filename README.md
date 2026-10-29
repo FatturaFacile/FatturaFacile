@@ -8,10 +8,12 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FatturaFacile)
 [![Telegram Community](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?logo=telegram&logoColor=white)](https://t.me/+sRauQINBDFQ5NjU0)
 [![Website](https://img.shields.io/badge/Website-fatturafacile.eu-emerald)](https://fatturafacile.eu)
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20Dashboard-orange)](https://demo.fatturafacile.eu/dashboard)
+[![Swagger / OpenAPI](https://img.shields.io/badge/API%20Docs-Swagger-85EA2D?logo=swagger&logoColor=black)](https://api.fatturafacile.eu/docs/api-docs.json)
 
 An open-source, modular invoicing ecosystem tailored for freelancers, small-to-medium businesses, and enterprises across Switzerland and Europe. Built with clean code practices, modern cross-platform stacks, and compliant with Swiss QR-Bill and European billing standards.
 
-[Explore Repositories](#-ecosystem--repositories) • [Architecture](#-architecture--stack) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [License](#-license)
+[Explore Repositories](#-ecosystem--repositories) • [Live Demo](https://demo.fatturafacile.eu/dashboard) • [API Docs](https://api.fatturafacile.eu/docs/api-docs.json) • [Architecture](#-architecture--stack) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [License](#-license)
 
 </div>
 
@@ -22,9 +24,9 @@ An open-source, modular invoicing ecosystem tailored for freelancers, small-to-m
 **FatturaFacile** simplifies invoicing, client billing, and business operations by decoupling the user experience across desktop, web, and mobile clients while maintaining consistent, robust business logic.
 
 Key highlights:
-* **Swiss QR-Bill Native:** Built-in compliance with Swiss QR-Bill standards (QR-Rechnung) including validation, reference numbers (SCOR, NON, QRR), and automated printable PDF generation.
-* **Modular Multi-Tier Ecosystem:** Dedicated components for desktop, web, and mobile use-cases.
-* **Open & Extensible:** Distributed under the permissive MIT license, welcoming contributions and enterprise customizations.
+- **Swiss QR-Bill Native:** Built-in compliance with Swiss QR-Bill standards (QR-Rechnung) including validation, reference numbers (SCOR, NON, QRR), and automated printable PDF generation.
+- **Modular Multi-Tier Ecosystem:** Dedicated components for desktop, web, and mobile use-cases.
+- **Open & Extensible:** Distributed under the permissive MIT license, welcoming contributions and enterprise customizations.
 
 ---
 
@@ -32,12 +34,14 @@ Key highlights:
 
 The project is structured into distinct, decoupled repositories under the **FatturaFacile** organization:
 
-| Component | Repository | Stack / Technology | Description |
+| Component | Repository / Link | Stack / Technology | Description |
 | :--- | :--- | :--- | :--- |
 | **Desktop Client** | [`desktop`](https://github.com/FatturaFacile/desktop) | .NET 8/9, C#, WPF / Modern UI | High-performance Windows native desktop application with offline-first capabilities. |
 | **Web Platform** | [`web`](https://github.com/FatturaFacile/web) | Laravel 11+, Filament, Livewire | Cloud-ready web interface with multi-user access, admin dashboards, and REST/GraphQL APIs. |
 | **Mobile Companion**| [`mobile`](https://github.com/FatturaFacile/mobile) | Flutter, Dart | Cross-platform mobile application (iOS & Android) for receipt scanning, quick quotes, and invoice tracking. |
 | **Official Website** | [`website`](https://github.com/FatturaFacile/website) | HTML5, Tailwind CSS | Official public landing page, showcase, and user documentation ([fatturafacile.eu](https://fatturafacile.eu)). |
+| **Live Demo** | [demo.fatturafacile.eu](https://demo.fatturafacile.eu/dashboard) | Web App Showcase | Live dashboard showcase to explore workflows and invoicing capabilities interactively. |
+| **API Docs (Swagger)** | [api.fatturafacile.eu](https://api.fatturafacile.eu/docs/api-docs.json) | OpenAPI 3.0 / JSON | Swagger / OpenAPI schema endpoint for client integrations and third-party tools. |
 | **Brand Assets** | [`assets`](https://github.com/FatturaFacile/assets) | Vector / SVG, Design Tokens | Official brand guidelines, logos, icons, UI kits, and typography resources. |
 
 ---
@@ -46,10 +50,10 @@ The project is structured into distinct, decoupled repositories under the **Fatt
 
 FatturaFacile adheres to strict engineering principles to maintain scalability, testability, and clarity:
 
-* **Clean Architecture & SOLID:** Clear segregation of Domain Models, Application Services, Use Cases, and Infrastructure Implementations.
-* **CQRS Pattern:** Strict separation of read and write pipelines for predictable state transitions and performant querying.
-* **Decoupled Contracts:** Shared API standards and data transfer schemas ensuring interoperability across Desktop, Web, and Mobile clients.
-* **Database Agnostic:** Flexible support for local-first storage (SQLite) as well as production relational databases (PostgreSQL, MySQL).
+- **Clean Architecture & SOLID:** Clear segregation of Domain Models, Application Services, Use Cases, and Infrastructure Implementations.
+- **CQRS Pattern:** Strict separation of read and write pipelines for predictable state transitions and performant querying.
+- **Decoupled Contracts:** Shared API standards and data transfer schemas ensuring interoperability across Desktop, Web, and Mobile clients.
+- **Database Agnostic:** Flexible support for local-first storage (SQLite) as well as production relational databases (PostgreSQL, MySQL).
 
 ---
 
@@ -137,5 +141,5 @@ copies or substantial portions of the Software.
 ---
 
 <div align="center">
-  <sub>Maintained with ❤️ by the <b>FatturaFacile</b> community • Built in Switzerland</sub>
+  <sub>Maintained with ❤️ by the <b>Fattura Facile</b> community</sub>
 </div>
