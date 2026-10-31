@@ -11,9 +11,9 @@
 [![Live Demo](https://img.shields.io/badge/Demo-Live%20Dashboard-orange)](https://demo.fatturafacile.eu/dashboard)
 [![Swagger / OpenAPI](https://img.shields.io/badge/API%20Docs-Swagger-85EA2D?logo=swagger&logoColor=black)](https://api.fatturafacile.eu/docs/api-docs.json)
 
-An open-source, modular invoicing ecosystem tailored for freelancers, small-to-medium businesses, and enterprises across Switzerland and Europe. Built with clean code practices, modern cross-platform stacks, and compliant with Italian & Swiss fiscal regulations.
+An open-source, modular invoicing ecosystem tailored for freelancers, small-to-medium businesses, and enterprises across Switzerland and Europe. Built with clean code practices, modern cross-platform stacks, and fully compliant with Italian and Swiss fiscal regulations.
 
-[Explore Repositories](#-ecosystem--repositories) • [Live Demo](https://demo.fatturafacile.eu/dashboard) • [API Docs](https://api.fatturafacile.eu/docs/api-docs.json) • [Architecture](#-architecture--stack) • [Compliance & Standards](#-standards--compliance) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [License](#-license)
+[Explore Repositories](#-ecosystem--repositories) • [Live Demo](https://demo.fatturafacile.eu/dashboard) • [API Docs](https://api.fatturafacile.eu/docs/api-docs.json) • [Architecture](#-architecture--principles) • [Standards & Compliance](#-standards--compliance) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [License](#-license)
 
 </div>
 
@@ -24,10 +24,10 @@ An open-source, modular invoicing ecosystem tailored for freelancers, small-to-m
 **FatturaFacile** simplifies invoicing, client billing, and business operations by decoupling the user experience across desktop, web, and mobile clients while maintaining consistent, robust business logic.
 
 Key highlights:
-- **Swiss & Italian Dual Compliance:** Native support for Swiss QR-Bill (QR-Rechnung), ISO 20022, Italian Fatturazione Elettronica (SDI / AdE), and border/customs digital frameworks.
+- **Swiss & Italian Dual Compliance:** Native support for Swiss QR-Bill (QR-Rechnung), ISO 20022 banking messaging, Italian Electronic Invoicing (SDI / AdE), and digital customs transit procedures.
 - **Enterprise-Grade Workflows:** Domain concepts modeled after industry-standard ERP platforms for streamlined accounting, bookkeeping, and reconciliation.
-- **Modular Multi-Tier Ecosystem:** Dedicated components for desktop, web, and mobile use-cases.
-- **Open & Extensible:** Distributed under the permissive MIT license, welcoming contributions and enterprise customizations.
+- **Modular Multi-Tier Ecosystem:** Dedicated independent modules for desktop, web, and mobile use-cases.
+- **Open & Extensible:** Distributed under the permissive MIT license, welcoming community contributions and enterprise-level customizations.
 
 ---
 
@@ -35,21 +35,21 @@ Key highlights:
 
 FatturaFacile is engineered to align with tier-1 enterprise software benchmarks while ensuring strict regulatory and fiscal conformity across Italy and Switzerland:
 
-### 🏢 Standard di Riferimento (ERP Benchmarks)
-- **SAP S/4HANA:** General ledger consistency, document splitting principles, structured account charts, and rigorous transactional audit trails.
-- **Microsoft Dynamics 365:** Modular entity modeling, decoupled services, clear state lifecycles, and flexible extension points.
+### 🏢 Reference Standards (ERP Benchmarks)
+- **SAP S/4HANA:** General ledger consistency, document splitting principles, structured charts of accounts, and rigorous transactional audit trails.
+- **Microsoft Dynamics 365:** Modular domain entities, decoupled lifecycle state machines, and flexible integration extension points.
 - **Odoo Enterprise:** Ergonomic user flows, rapid billing pipelines, and modular add-on capabilities.
 
-### ⚖️ Conformità Fiscale & Normativa
-- **🇮🇹 Italia:**
-  - **Agenzia delle Entrate (AdE) & SDI:** Validazione e trasmissione tracciati XML FatturaPA (B2B, B2C, B2G) con gestione dello stato delle notifiche d'interscambio.
-  - **LUL (Libro Unico del Lavoro):** Allineamento dati contabili e tracciamento delle voci retributive e contributive di supporto.
-  - **AgID:** Aderenza alle linee guida per l'interoperabilità, formati aperti e requisiti di sicurezza per la PA.
-- **🇨🇭 Svizzera:**
-  - **ESTV (AFC - Amministrazione Federale delle Contribuzioni):** Gestione aliquote IVA svizzera (normale, ridotta, speciale), rendicontazione periodica e conformità contabile.
-  - **ISO 20022 & QR-Bill:** Generazione e parsing conformi di QR-Rechnung (SCOR, NON, QRR) e integrazione con standard bancari SEPA/SIC (pain.001, pain.002, camt.053/054).
-  - **revLPD (Nuova Legge federale sulla protezione dei dati):** Crittografia at-rest/in-transit, privacy-by-design e registro dettagliato del trattamento dati.
-  - **e-dec / Passar:** Supporto ai processi doganali digitali per dichiarazioni di transito, import ed export di beni.
+### ⚖️ Fiscal & Regulatory Compliance
+- **🇮🇹 Italy:**
+  - **Agenzia delle Entrate (AdE) & SDI:** Validation, generation, and transmission of FatturaPA XML formats (B2B, B2C, B2G) along with complete interchange notification status tracking.
+  - **LUL (Libro Unico del Lavoro):** Alignment with labor/payroll accounting structures and compliant tracking of tax and social security items.
+  - **AgID:** Strict adherence to interoperability guidelines, open data formats, and public administration security standards.
+- **🇨🇭 Switzerland:**
+  - **ESTV (FTA - Federal Tax Administration):** Support for all Swiss VAT rates (standard, reduced, special), periodic reporting, and tax accounting compliance.
+  - **ISO 20022 & QR-Bill:** Native generation and validation of QR-Rechnung (SCOR, NON, QRR) and automated processing of SEPA/SIC banking files (`pain.001`, `pain.002`, `camt.053`/`camt.054`).
+  - **revFADP / revLPD (Revised Federal Act on Data Protection):** Privacy-by-design, at-rest and in-transit data encryption, and comprehensive data processing logs.
+  - **e-dec / Passar:** Integration readiness for digital customs clearance workflows, import/export declarations, and cross-border freight transit.
 
 ---
 
@@ -60,9 +60,9 @@ The project is structured into distinct, decoupled repositories under the **Fatt
 | Component | Repository / Link | Stack / Technology | Description |
 | :--- | :--- | :--- | :--- |
 | **Core API Engine** | [`api`](https://github.com/FatturaFacile/api) | Laravel Core API | Central business domain, CQRS application services, tax validation engines, and secure REST/GraphQL endpoints. |
-| **Web Platform** | [`web`](https://github.com/FatturaFacile/web) | Angular Web | Modern single-page web client with reactive state management, enterprise dashboards, and multi-tenant access. |
-| **Mobile Companion**| [`mobile`](https://github.com/FatturaFacile/mobile) | Flutter Mobile | Cross-platform client (iOS & Android) for receipt scanning, quick quotes, and on-the-go billing tracking. |
-| **Offline Engine** | [`desktop`](https://github.com/FatturaFacile/desktop) | WPF Offline Engine (.NET) | Native Windows application engineered for zero-latency offline work, local SQLite syncing, and direct hardware printing. |
+| **Web Platform** | [`web`](https://github.com/FatturaFacile/web) | Angular Web | Modern single-page web client featuring reactive state management, enterprise dashboards, and multi-tenant access. |
+| **Mobile Companion** | [`mobile`](https://github.com/FatturaFacile/mobile) | Flutter Mobile | Cross-platform client (iOS & Android) for receipt scanning, rapid quote generation, and on-the-go invoice tracking. |
+| **Offline Engine** | [`desktop`](https://github.com/FatturaFacile/desktop) | WPF Offline Engine (.NET) | Native Windows application engineered for zero-latency offline work, local SQLite data persistence, and direct hardware printing. |
 | **Official Website** | [`website`](https://github.com/FatturaFacile/website) | HTML5, Tailwind CSS | Official public landing page, showcase, and user documentation ([fatturafacile.eu](https://fatturafacile.eu)). |
 | **Live Demo** | [demo.fatturafacile.eu](https://demo.fatturafacile.eu/dashboard) | Web App Showcase | Live dashboard showcase to explore workflows and invoicing capabilities interactively. |
 | **API Docs (Swagger)** | [api.fatturafacile.eu](https://api.fatturafacile.eu/docs/api-docs.json) | OpenAPI 3.0 / JSON | Swagger / OpenAPI schema endpoint for client integrations and third-party tools. |
@@ -75,8 +75,8 @@ The project is structured into distinct, decoupled repositories under the **Fatt
 FatturaFacile operates across a decoupled, polyglot architecture:
 `Laravel Core API` ⬝ `Angular Web` ⬝ `Flutter Mobile` ⬝ `WPF Offline Engine`
 
-- **Clean Architecture & SOLID:** Strict boundary enforcement between Domain Entities, Use Cases, Repositories, and Infrastructure Adapters.
-- **CQRS Pattern:** Segregated Command (mutation) and Query (read) handlers ensuring auditability, schema evolution safety, and high-performance querying.
+- **Clean Architecture & SOLID:** Strict boundary enforcement between Domain Entities, Application Services, Use Cases, Repositories, and Infrastructure Adapters.
+- **CQRS Pattern:** Segregated Command (write) and Query (read) pipelines ensuring full auditability, schema evolution safety, and high-performance querying.
 - **Offline-First & Eventual Consistency:** The WPF Offline Engine leverages transactional local storage (SQLite) and synchronizes bidirectionally with the Laravel Core API via conflict-resolving sync queues.
 - **Decoupled API Contracts:** Standardized OpenAPI specifications and data transfer contracts ensure contract-driven development across Angular, Flutter, and WPF.
 - **Database Agnostic:** Seamless compatibility with local embedded databases (SQLite) and distributed enterprise relational engines (PostgreSQL, MySQL).
