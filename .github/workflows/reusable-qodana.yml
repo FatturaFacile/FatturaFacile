@@ -1,0 +1,48 @@
+# Shared Qodana code quality scan.
+#
+# Usage (.github/workflows/qodana.yml in the calling repo, next to its qodana.yaml):
+#
+#   on:
+#     push:
+#       branches: [ main ]
+#     pull_request:
+#   jobs:
+#     qodana:
+#       uses: FatturaFacile/FatturaFacile/.github/workflows/reusable-qodana.yml@main
+#       permissions:
+#         contents: read
+#         checks: write
+#         pull-requests: write
+#         security-events: write
+#       secrets: inherit
+#
+# Needs the QODANA_TOKEN secret.
+name: Reusable - Qodana
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  qodana:
+    name: Qodana Code Quality Scan
+    # Pull requests from forks get no repository secrets: skip
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Run Qodana Scan
+        uses: JetBrains/qodana-action@3e8d76ff0e0241618abd808682f426afe84bab3f # v2026.2.2
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
