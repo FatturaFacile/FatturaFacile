@@ -1,0 +1,40 @@
+# Shared Dependabot auto-merge: approves Dependabot PRs and enables squash
+# auto-merge, so they land as soon as the required checks pass.
+#
+# Usage (.github/workflows/auto-merge.yml in the calling repo):
+#
+#   on: pull_request_target
+#   jobs:
+#     auto-merge:
+#       uses: FatturaFacile/FatturaFacile/.github/workflows/reusable-dependabot-automerge.yml@main
+#       permissions:
+#         pull-requests: write
+#         contents: write
+name: Reusable - Dependabot Auto-Merge
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  auto-merge:
+    name: Auto-merge Dependabot PR
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - name: Approve Dependabot PR
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Enable auto-merge
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ github.token }}
