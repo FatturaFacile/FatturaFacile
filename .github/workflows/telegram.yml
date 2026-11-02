@@ -14,5 +14,7 @@ permissions: {}
 
 jobs:
   notify:
+    # Dependabot pull requests get no repository secrets: skip what needs them
+    if: github.actor != 'dependabot[bot]'
     uses: ./.github/workflows/reusable-telegram.yml
     secrets: inherit
