@@ -7,15 +7,27 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FatturaFacile)
 [![Telegram Community](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0?logo=telegram&logoColor=white)](https://t.me/+sRauQINBDFQ5NjU0)
+[![Desktop CI](https://github.com/FatturaFacile/desktop/actions/workflows/ci.yml/badge.svg)](https://github.com/FatturaFacile/desktop/actions/workflows/ci.yml)
+[![Web API CI](https://github.com/FatturaFacile/web-api/actions/workflows/erp-ci.yml/badge.svg)](https://github.com/FatturaFacile/web-api/actions/workflows/erp-ci.yml)
+[![Web Frontend CI](https://github.com/FatturaFacile/web-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/FatturaFacile/web-frontend/actions/workflows/ci.yml)
+[![Website](https://github.com/FatturaFacile/website/actions/workflows/deploy.yml/badge.svg)](https://github.com/FatturaFacile/website/actions/workflows/deploy.yml)
 [![Website](https://img.shields.io/badge/Website-fatturafacile.eu-emerald)](https://fatturafacile.eu)
 [![Live Demo](https://img.shields.io/badge/Demo-Live%20Dashboard-orange)](https://demo.fatturafacile.eu/dashboard)
 [![Swagger / OpenAPI](https://img.shields.io/badge/API%20Docs-Swagger-85EA2D?logo=swagger&logoColor=black)](https://api.fatturafacile.eu/docs/api-docs.json)
 
 An open-source, modular invoicing ecosystem tailored for freelancers, small-to-medium businesses, and enterprises across Switzerland and Europe. Built with clean code practices, modern cross-platform stacks, and fully compliant with Italian and Swiss fiscal regulations.
 
-[Explore Repositories](#-ecosystem--repositories) • [Live Demo](https://demo.fatturafacile.eu/dashboard) • [API Docs](https://api.fatturafacile.eu/docs/api-docs.json) • [Architecture](#-architecture--principles) • [Standards & Compliance](#-standards--compliance) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [License](#-license)
+[What & who for](#-what-is-it-and-who-is-it-for) • [Explore Repositories](#-ecosystem--repositories) • [Live Demo](https://demo.fatturafacile.eu/dashboard) • [API Docs](https://api.fatturafacile.eu/docs/api-docs.json) • [Architecture](#-architecture--principles) • [Standards & Compliance](#-standards--compliance) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [Contact](#-contact) • [License](#-license)
 
 </div>
+
+---
+
+## 🧭 What is it and who is it for
+
+FatturaFacile is a free, open-source management suite for craftspeople, freelancers and small-to-medium businesses working in Switzerland and Italy: quotes, invoices (FatturaPA and Swiss QR-Bill), warehouse and accounting. The web version is available today and can be tried in the [live demo](https://demo.fatturafacile.eu/dashboard) or self-hosted with Docker; desktop and mobile clients are in development, on the same open code.
+
+Useful links: [Website](https://fatturafacile.eu) • [Web app (demo)](https://demo.fatturafacile.eu/dashboard) • [API docs](https://api.fatturafacile.eu/docs/api-docs.json) • [Project deck](https://github.com/FatturaFacile/assets/tree/main/docs/FatturaFacile%20-%20Il%20progetto%20e%20come%20contribuire)
 
 ---
 
@@ -59,8 +71,8 @@ The project is structured into distinct, decoupled repositories under the **Fatt
 
 | Component | Repository / Link | Stack / Technology | Description |
 | :--- | :--- | :--- | :--- |
-| **Core API Engine** | [`api`](https://github.com/FatturaFacile/api) | Laravel Core API | Central business domain, CQRS application services, tax validation engines, and secure REST/GraphQL endpoints. |
-| **Web Platform** | [`web`](https://github.com/FatturaFacile/web) | Angular Web | Modern single-page web client featuring reactive state management, enterprise dashboards, and multi-tenant access. |
+| **Core API Engine** | [`web-api`](https://github.com/FatturaFacile/web-api) | Laravel Core API | Central business domain, CQRS application services, tax validation engines, and secure REST/GraphQL endpoints. |
+| **Web Platform** | [`web-frontend`](https://github.com/FatturaFacile/web-frontend) | Angular Web | Modern single-page web client featuring reactive state management, enterprise dashboards, and multi-tenant access. |
 | **Mobile Companion** | [`mobile`](https://github.com/FatturaFacile/mobile) | Flutter Mobile | Cross-platform client (iOS & Android) for receipt scanning, rapid quote generation, and on-the-go invoice tracking. |
 | **Offline Engine** | [`desktop`](https://github.com/FatturaFacile/desktop) | WPF Offline Engine (.NET) | Native Windows application engineered for zero-latency offline work, local SQLite data persistence, and direct hardware printing. |
 | **Official Website** | [`website`](https://github.com/FatturaFacile/website) | HTML5, Tailwind CSS | Official public landing page, showcase, and user documentation ([fatturafacile.eu](https://fatturafacile.eu)). |
@@ -89,8 +101,8 @@ Each module can be developed and run independently. To get started:
 
 ### 1. Core API (Laravel)
 ```bash
-git clone https://github.com/FatturaFacile/api.git
-cd api
+git clone https://github.com/FatturaFacile/web-api.git
+cd web-api
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -100,8 +112,8 @@ php artisan serve
 
 ### 2. Web Client (Angular)
 ```bash
-git clone https://github.com/FatturaFacile/web.git
-cd web
+git clone https://github.com/FatturaFacile/web-frontend.git
+cd web-frontend
 npm install
 npm run start
 ```
@@ -141,7 +153,17 @@ We welcome community feedback, pull requests, bug fixes, and feature proposals!
    ```
 4. Push to your branch and submit a **Pull Request**.
 
-Please refer to each repository's individual `CONTRIBUTING.md` guide for testing guidelines and linting rules.
+Please refer to each repository's individual `CONTRIBUTING.md` guide for testing guidelines and linting rules, for example [desktop](https://github.com/FatturaFacile/desktop/blob/main/CONTRIBUTING.md) and [website](https://github.com/FatturaFacile/website/blob/main/CONTRIBUTING.md).
+
+New to the project? The [project deck](https://github.com/FatturaFacile/assets/tree/main/docs/FatturaFacile%20-%20Il%20progetto%20e%20come%20contribuire) (PDF/PPTX, in Italian) explains what we are building and how to help. You can also open an issue or join the [Telegram community](https://t.me/+sRauQINBDFQ5NjU0).
+
+---
+
+## ✉️ Contact
+
+- General: **info@fatturafacile.eu**
+- Social & communication: **social@fatturafacile.eu**
+- Security: **security@fatturafacile.eu** (see below)
 
 ---
 
