@@ -1,0 +1,16 @@
+{
+  "compactThresholdPercent": 50,
+  "maxBashOutputChars": 15000,
+  "permissions": {
+    "deny": [
+      "Read(./**/bin/**)",
+      "Read(./**/obj/**)",
+      "Read(./**/vendor/**)",
+      "Read(./**/node_modules/**)",
+      "Read(./**/*.Designer.cs)",
+      "Read(./**/*.lock)",
+      "Read(./**/*-lock.*)",
+      "Read(./**/.env*)"
+    ]
+  }
+}

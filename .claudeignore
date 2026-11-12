@@ -1,0 +1,27 @@
+# Build & Dependencies
+bin/
+obj/
+node_modules/
+vendor/
+.vs/
+.idea/
+
+# Generated & Lock files (enormous token sinks)
+*.Designer.cs
+*.g.cs
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+composer.lock
+*.min.js
+*.min.css
+*.map
+
+# Data, Logs & Local DBs
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.log
+logs/
+coverage/
+TestResults/

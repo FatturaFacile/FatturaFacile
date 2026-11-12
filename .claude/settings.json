@@ -1,0 +1,38 @@
+{
+  "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60",
+    "MAX_THINKING_TOKENS": "8000",
+    "BASH_MAX_OUTPUT_LENGTH": "15000"
+  },
+  "permissions": {
+    "deny": [
+      "Read(./**/bin/**)",
+      "Read(./**/obj/**)",
+      "Read(./**/vendor/**)",
+      "Read(./**/node_modules/**)",
+      "Read(./**/.git/**)",
+      "Read(./**/*.Designer.cs)",
+      "Read(./**/*.g.cs)",
+      "Read(./**/package-lock.json)",
+      "Read(./**/yarn.lock)",
+      "Read(./**/pnpm-lock.yaml)",
+      "Read(./**/composer.lock)",
+      "Read(./**/*.sqlite*)",
+      "Read(./**/*.log)",
+      "Read(./**/.env*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git status -s && git log -n 3 --oneline"
+          }
+        ]
+      }
+    ]
+  }
+}
