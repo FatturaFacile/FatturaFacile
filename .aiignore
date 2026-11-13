@@ -1,0 +1,30 @@
+# Ignore list shared by every AI tool of this repository (gitignore syntax).
+# Copy of: .aiignore .claudeignore .agyignore .copilotignore. Keep them identical.
+
+# Secrets and local data (never read)
+.env
+.env.*
+auth.json
+certs/
+*.pem
+*.key
+*.pfx
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.log
+logs/
+coverage/
+.idea/
+.vs/
+
+# Generated and minified files (token sinks)
+*.min.js
+*.min.css
+*.map
+*.pdf
+*.zip
+*.psd
+*.ai
+*.fig
+*.mp4

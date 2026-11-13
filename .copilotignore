@@ -1,34 +1,30 @@
-# ==========================================
-# .copilotignore - Exclude context from Copilot
-# ==========================================
+# Ignore list shared by every AI tool of this repository (gitignore syntax).
+# Copy of: .aiignore .claudeignore .agyignore .copilotignore. Keep them identical.
 
-# File generati e dipendenze
-node_modules/
-vendor/
-bin/
-obj/
-dist/
-build/
-
-# Lockfiles
-*.lock
-package-lock.json
-composer.lock
-
-# Asset multimediali e documentazione binaria
-*.pdf
-*.svg
-*.png
-*.jpg
-*.jpeg
-*.zip
-
-# Dati e configurazioni private
-*.env
-*.env.*
-appsettings*.secrets.json
+# Secrets and local data (never read)
+.env
+.env.*
+auth.json
+certs/
 *.pem
-*.pfx
 *.key
+*.pfx
 *.sqlite
-*.db
+*.sqlite-wal
+*.sqlite-shm
+*.log
+logs/
+coverage/
+.idea/
+.vs/
+
+# Generated and minified files (token sinks)
+*.min.js
+*.min.css
+*.map
+*.pdf
+*.zip
+*.psd
+*.ai
+*.fig
+*.mp4
