@@ -78,15 +78,15 @@ graph TD
 
 | Repository / Folder | Role & Purpose | Primary Tech Stack | Key Architectural Features |
 | :--- | :--- | :--- | :--- |
-| **[`web-api/`](../web-api)** | Central Multi-Tenant Enterprise ERP Backend | **PHP 8.5**, **Laravel 13**, PostgreSQL 16+ / SQLite, Redis, Laravel Sanctum, Spatie Permission | Modular Clean Architecture / DDD across 60+ bounded context modules (`02_CRM`, `05_Invoicing`, `06_SDI`, `13_Procurement`, `14_Inventory`, `18_HR`, `22_GeneralLedger`, `24_Treasury`), `/api/v1` REST API, row-level multi-tenancy (`TenantScope`), transactional Outbox pattern, immutable SHA-256 audit ledger, TOTP 2FA, SSO/SAML, and OpenAPI 3.1 generation. |
-| **[`web-frontend/`](../web-frontend)** | Enterprise Cloud Web ERP Single-Page Application | **Angular 22**, **TypeScript 6.0**, **NG-ZORRO** (Ant Design), `@ngrx/signals`, RxJS, Less/SCSS | 100% Standalone components, OnPush change detection, native control flow (`@if`, `@for`), dual-jurisdiction toggle (IT/CH), quad-lingual i18n (`it`, `en`, `de`, `fr`), Swiss QR-Bill generator, Italian SDI intake/tracking, dual ledger (Libro Giornale / Swiss KMU), virtual time clock, and PWA service worker. |
-| **[`web-frontend-inglorious/`](../web-frontend-inglorious)** | Lightweight ECS-Based Web ERP Client | **Inglorious Web**, **TypeScript**, **lit-html**, **Vite**, `@inglorious/store`, `@inglorious/ui` | High-performance alternative client built on Entity-Component-System (ECS) principles; shares backend contracts and translations while shipping ~80% less JavaScript/CSS (82.6 kB initial gzip), sub-second LCP, zero-dependency state management, and full route coverage. |
-| **[`desktop/`](../desktop)** | High-Performance Offline-First Windows ERP | **.NET 11** (C# Preview), **WPF**, **SQLite**, Entity Framework Core 11, Syncfusion WPF (`FluentDark`), CommunityToolkit.Mvvm | Strict Clean Architecture with **ZERO Tactical DDD Mandate** (pure POCO entities, MediatR CQRS handlers, localized Country Strategies for CH/IT), row-level SQLite multi-tenancy, Windows Hello biometric/PIN authentication (`UserConsentVerifier`), AES-GCM field encryption via DPAPI, Inno Setup installer, and offline-first data sovereignty. |
-| **[`mobile/`](../mobile)** | Cross-Platform Field Service & Billing Companion | **Flutter** (SDK `>=3.13.5`), **Dart**, Material Design 3, Cupertino UI | Unified cross-platform codebase for iOS and Android; field invoicing, digital customer signature capture on service intervention reports (*rapportini*), offline persistent caching, receipt/expense scanning, and GPS-enabled time tracking. |
-| **[`database/`](../database)** | Enterprise Relational Database Schema & Models | **PostgreSQL 16+**, **MySQL**, **SQLite**, ANSI SQL DDL | Authoritative relational model defining **416 tables** and **696 foreign keys** across 17 architectural domains, topological order for direct DBeaver ER diagram import, UUIDv7 primary keys, tenant scoping matrix (`tenant_id`), composite uniqueness rules, and fiscal deletion policies (`ON DELETE RESTRICT`). |
-| **[`website/`](../website)** | Official Showcase & Institutional Hub | **Astro**, **HTML5 Semantic**, **Tailwind CSS**, TypeScript, Vanilla JavaScript | Zero-build/high-speed static architecture powering [fatturafacile.eu](https://fatturafacile.eu); responsive dark/light mode, client-side quad-lingual switcher (`en`, `it`, `fr`, `de`), interactive EU GDPR & Swiss nLPD compliance modal, Schema.org JSON-LD SEO, and GitHub Pages deployment. |
-| **[`assets/`](../assets)** | Official Brand Identity & Media Kit | **SVG Vector**, **PNG** (1x–4x), **Design Tokens**, Inter & Merriweather Fonts | Master brand repository containing logos, app icons, technology badges, color palette guidelines (Primary Navy `#0F172A`, Accent Emerald `#10B981`), UI screenshots, presentation slide decks (`docs/`), and CC BY 4.0 media licensing. |
-| **[`FatturaFacile.wiki/`](../FatturaFacile.wiki)** | Engineering & Technical Architecture Documentation | **Markdown**, Mermaid Diagrams | Comprehensive developer wiki documenting system architecture, cross-border fiscal rule engines, CI/CD workflows, branching conventions, environment topologies, and contribution standards. |
+| **[`web-api/`](https://github.com/FatturaFacile/web-api)** | Central Multi-Tenant Enterprise ERP Backend | **PHP 8.5**, **Laravel 13**, PostgreSQL 16+ / SQLite, Redis, Laravel Sanctum, Spatie Permission | Modular Clean Architecture / DDD across 60+ bounded context modules (`02_CRM`, `05_Invoicing`, `06_SDI`, `13_Procurement`, `14_Inventory`, `18_HR`, `22_GeneralLedger`, `24_Treasury`), `/api/v1` REST API, row-level multi-tenancy (`TenantScope`), transactional Outbox pattern, immutable SHA-256 audit ledger, TOTP 2FA, SSO/SAML, and OpenAPI 3.1 generation. |
+| **[`web-frontend/`](https://github.com/FatturaFacile/web-frontend)** | Enterprise Cloud Web ERP Single-Page Application | **Angular 22**, **TypeScript 6.0**, **NG-ZORRO** (Ant Design), `@ngrx/signals`, RxJS, Less/SCSS | 100% Standalone components, OnPush change detection, native control flow (`@if`, `@for`), dual-jurisdiction toggle (IT/CH), quad-lingual i18n (`it`, `en`, `de`, `fr`), Swiss QR-Bill generator, Italian SDI intake/tracking, dual ledger (Libro Giornale / Swiss KMU), virtual time clock, and PWA service worker. |
+| **[`web-frontend-inglorious/`](https://github.com/FatturaFacile/web-frontend-inglorious)** | Lightweight ECS-Based Web ERP Client | **Inglorious Web**, **TypeScript**, **lit-html**, **Vite**, `@inglorious/store`, `@inglorious/ui` | High-performance alternative client built on Entity-Component-System (ECS) principles; shares backend contracts and translations while shipping ~80% less JavaScript/CSS (82.6 kB initial gzip), sub-second LCP, zero-dependency state management, and full route coverage. |
+| **[`desktop/`](https://github.com/FatturaFacile/desktop)** | High-Performance Offline-First Windows ERP | **.NET 11** (C# Preview), **WPF**, **SQLite**, Entity Framework Core 11, Syncfusion WPF (`FluentDark`), CommunityToolkit.Mvvm | Strict Clean Architecture with **ZERO Tactical DDD Mandate** (pure POCO entities, MediatR CQRS handlers, localized Country Strategies for CH/IT), row-level SQLite multi-tenancy, Windows Hello biometric/PIN authentication (`UserConsentVerifier`), AES-GCM field encryption via DPAPI, Inno Setup installer, and offline-first data sovereignty. |
+| **[`mobile/`](https://github.com/FatturaFacile/mobile)** | Cross-Platform Field Service & Billing Companion | **Flutter** (SDK `>=3.13.5`), **Dart**, Material Design 3, Cupertino UI | Unified cross-platform codebase for iOS and Android; field invoicing, digital customer signature capture on service intervention reports (*rapportini*), offline persistent caching, receipt/expense scanning, and GPS-enabled time tracking. |
+| **[`database/`](https://github.com/FatturaFacile/database)** | Enterprise Relational Database Schema & Models | **PostgreSQL 16+**, **MySQL**, **SQLite**, ANSI SQL DDL | Authoritative relational model defining **416 tables** and **696 foreign keys** across 17 architectural domains, topological order for direct DBeaver ER diagram import, UUIDv7 primary keys, tenant scoping matrix (`tenant_id`), composite uniqueness rules, and fiscal deletion policies (`ON DELETE RESTRICT`). |
+| **[`website/`](https://github.com/FatturaFacile/website)** | Official Showcase & Institutional Hub | **Astro**, **HTML5 Semantic**, **Tailwind CSS**, TypeScript, Vanilla JavaScript | Zero-build/high-speed static architecture powering [fatturafacile.eu](https://fatturafacile.eu); responsive dark/light mode, client-side quad-lingual switcher (`en`, `it`, `fr`, `de`), interactive EU GDPR & Swiss nLPD compliance modal, Schema.org JSON-LD SEO, and GitHub Pages deployment. |
+| **[`assets/`](https://github.com/FatturaFacile/assets)** | Official Brand Identity & Media Kit | **SVG Vector**, **PNG** (1x–4x), **Design Tokens**, Inter & Merriweather Fonts | Master brand repository containing logos, app icons, technology badges, color palette guidelines (Primary Navy `#0F172A`, Accent Emerald `#10B981`), UI screenshots, presentation slide decks (`docs/`), and CC BY 4.0 media licensing. |
+| **[`FatturaFacile.wiki/`](https://github.com/FatturaFacile/FatturaFacile.wiki)** | Engineering & Technical Architecture Documentation | **Markdown**, Mermaid Diagrams | Comprehensive developer wiki documenting system architecture, cross-border fiscal rule engines, CI/CD workflows, branching conventions, environment topologies, and contribution standards. |
 
 ---
 
@@ -225,14 +225,14 @@ npm run dev
 
 ## 📚 Documentation & Wiki References
 
-Deep technical guides, architectural decision records, and operational manuals are maintained in the documentation wiki ([`FatturaFacile.wiki/`](../FatturaFacile.wiki)):
+Deep technical guides, architectural decision records, and operational manuals are maintained in the documentation wiki ([`FatturaFacile.wiki/`](https://github.com/FatturaFacile/FatturaFacile.wiki)):
 
-- **[Master System Architecture](../FatturaFacile.wiki/Architecture.md):** Clean Architecture boundaries, CQRS command bus pipelines, cross-border fiscal engines, and security models.
-- **[Ecosystem & Repository Blueprint](../FatturaFacile.wiki/Ecosystem.md):** Granular module-by-module breakdown and responsibility matrix.
-- **[Configuration & Environments](../FatturaFacile.wiki/Configuration-And-Environments.md):** Infrastructure topology, dev/demo/production deployment parameters, and secret naming conventions.
-- **[Workflows & CI/CD Pipelines](../FatturaFacile.wiki/Workflows-And-CI-CD.md):** Git branching models, quality gates, automated test runners, and release tagging protocols.
-- **[Database Architecture & Schema Index](../database/README.md):** Multi-tenancy isolation models, UUIDv7 conventions, DBeaver CE ER import instructions, and schema catalog.
-- **[Brand Style Guide & Assets](../assets/README.md):** Master color palette, typography specifications (Inter / Merriweather), and media usage policies.
+- **[Master System Architecture](https://github.com/FatturaFacile/FatturaFacile.wiki/blob/main/Architecture.md):** Clean Architecture boundaries, CQRS command bus pipelines, cross-border fiscal engines, and security models.
+- **[Ecosystem & Repository Blueprint](https://github.com/FatturaFacile/FatturaFacile.wiki/blob/main/Ecosystem.md):** Granular module-by-module breakdown and responsibility matrix.
+- **[Configuration & Environments](https://github.com/FatturaFacile/FatturaFacile.wiki/blob/main/Configuration-And-Environments.md):** Infrastructure topology, dev/demo/production deployment parameters, and secret naming conventions.
+- **[Workflows & CI/CD Pipelines](https://github.com/FatturaFacile/FatturaFacile.wiki/blob/main/Workflows-And-CI-CD.md):** Git branching models, quality gates, automated test runners, and release tagging protocols.
+- **[Database Architecture & Schema Index](https://github.com/FatturaFacile/database/blob/main/README.md):** Multi-tenancy isolation models, UUIDv7 conventions, DBeaver CE ER import instructions, and schema catalog.
+- **[Brand Style Guide & Assets](https://github.com/FatturaFacile/assets/blob/main/README.md):** Master color palette, typography specifications (Inter / Merriweather), and media usage policies.
 
 ---
 
@@ -241,7 +241,7 @@ Deep technical guides, architectural decision records, and operational manuals a
 We warmly welcome community involvement, issue reports, localization additions, and code contributions!
 
 ### How to Contribute
-1. **Explore the Wiki:** Review [Contributing Guidelines](../FatturaFacile.wiki/Contributing.md) for testing expectations and coding styles.
+1. **Explore the Wiki:** Review [Contributing Guidelines](https://github.com/FatturaFacile/FatturaFacile.wiki/blob/main/Contributing.md) for testing expectations and coding styles.
 2. **Fork & Branch:** Create a topical feature or fix branch from `main` (or `dev` depending on the repository):
    ```bash
    git checkout -b feat/swiss-qr-scor-validator
@@ -283,7 +283,7 @@ The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 ```
 
-*(Note: Brand vector marks and graphical assets in [`assets/`](../assets) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), and embedded fonts retain their respective SIL Open Font License 1.1).*
+*(Note: Brand vector marks and graphical assets in [`assets/`](https://github.com/FatturaFacile/assets) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), and embedded fonts retain their respective SIL Open Font License 1.1).*
 
 ---
 
