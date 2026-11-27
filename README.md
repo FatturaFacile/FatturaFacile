@@ -260,6 +260,53 @@ Technical documentation lives next to the code in each repository:
 
 ---
 
+# 🚀 Join FatturaFacile
+
+FatturaFacile is a free and open-source ERP built by the community.
+
+We are creating a collaborative ecosystem of developers, designers, testers, students, translators and contributors from Italy, Switzerland and the rest of Europe.
+
+Whether you are an experienced professional or a student looking for real-world open-source experience, you are welcome to join us.
+
+## 👥 We're Looking For
+
+- Laravel / PHP Developers
+- Angular Developers
+- Flutter Developers
+- .NET Developers
+- Full Stack Developers
+- QA Testers
+- Technical Writers
+- Documentation Contributors
+- UI / UX Designers
+- Translators (IT, EN, DE, FR)
+- Marketing & Communication Contributors
+- Community Managers
+- Computer Science Students
+- Junior Developers
+- Open Source Enthusiasts
+
+## 🌟 Why Join?
+
+- Work on a real-world ERP project
+- Gain practical open-source experience
+- Build your GitHub portfolio
+- Learn enterprise software architecture
+- Collaborate with contributors from different countries
+- Help professionals, freelancers and small businesses access free software
+
+## 📝 Contributor Application Form
+
+Interested in contributing?
+
+### 👉 https://forms.gle/qcawPequAXqvhVzH9
+
+After reviewing your application, we will help you find the most suitable area where you can contribute.
+
+## 💬 Community
+
+You can also join our Telegram community to meet contributors, discuss ideas, ask questions and stay updated on the project's progress.
+
 ## 🤝 Contributing, Community & License
 
 We warmly welcome community involvement, issue reports, localization additions, and code contributions!
