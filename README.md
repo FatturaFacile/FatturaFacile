@@ -34,17 +34,17 @@ Distributed under the permissive **MIT License**, FatturaFacile avoids vendor lo
 - **Many further modules** exist in `web-api` (CRM, procurement, inventory, general ledger, treasury, HR, projects, manufacturing and more) with matching screens in `web-frontend`. Their maturity varies: treat anything beyond quotes, invoices and compliance as work in progress and check the [website module list](https://fatturafacile.eu) for the current status.
 
 ### In development and roadmap
-- **Desktop client** (Windows, offline-first, SQLite): in development.
-- **Mobile app** (Flutter): early stage; field-service features (signed service reports, receipt scanning, time tracking) are planned, not yet shipped.
+- **Desktop client** (Windows, offline-first, SQLite, optional sync with the API): in development.
+- **Mobile app** (Flutter): early stage and not released; the offline-first foundation and several feature modules (for example field service and inventory) are in the code, with screens still incomplete.
 - **Payment schedules** (in development), **simplified stock**, **cash register integration** and **advanced address book** (planned or on the community backlog).
-- **`mcp-server`, `integrations` and `openapi-sdk`:** repositories created on 2026-11-16 as placeholders; no features yet.
+- **`mcp-server`, `integrations` and `openapi-sdk`:** early-stage developer tooling around the API (an MCP server, a connector monorepo, and the OpenAPI specification with generated SDKs). They build and have tests, but are not released.
 - Compliance is a goal, not a certification: validate invoices and bookkeeping with your accountant before relying on them for filings.
 
 ---
 
 ## 🏛 Ecosystem Architecture & Repository Map
 
-The FatturaFacile ecosystem is organized into dedicated, decoupled repositories, each serving a distinct role. The org also contains a `FatturaFacile` repository (this one, with the org-level README) and private demo repositories that are not part of the product.
+The FatturaFacile ecosystem is organized into dedicated, decoupled repositories, each serving a distinct role. The org also contains a `FatturaFacile` repository (this one, with the org-level README), a `.github` repository with the default community health files, and private demo repositories that are not part of the product.
 
 ```mermaid
 graph TD
@@ -69,7 +69,7 @@ graph TD
     end
 
     subgraph ServiceLayer ["Backend & Core API Gateway"]
-        API["web-api<br/><i>Laravel 13 &bull; PHP 8.5 &bull; Sanctum &bull; 37 modules</i>"]:::service
+        API["web-api<br/><i>Laravel 13 &bull; PHP 8.6 &bull; Sanctum &bull; 100+ modules</i>"]:::service
     end
 
     subgraph DataStorage ["Data & Enterprise Persistence"]
@@ -78,12 +78,12 @@ graph TD
     end
 
     subgraph StandardsHub ["Assets & Community"]
-        ASSETS["assets<br/><i>Vector Logos &bull; Tokens &bull; Media Kit</i>"]:::docs
+        ASSETS["assets<br/><i>Logos &bull; Icons &bull; Fonts</i>"]:::docs
         AWESOME["awesome-italia-opensource<br/><i>Fork &bull; Italian open-source lists</i>"]:::docs
     end
 
     DESK --> SQLITE_LOCAL
-    DESK -.->|Planned sync| API
+    DESK -.->|Optional sync| API
     WEB -->|RESTful JSON / Sanctum| API
     WEB_ING -->|RESTful JSON / Sanctum| API
     MOB -->|RESTful JSON / Bearer| API
@@ -98,17 +98,17 @@ graph TD
 
 | Repository / Folder | Role & Purpose | Primary Tech Stack | Key Architectural Features |
 | :--- | :--- | :--- | :--- |
-| **[`web-api/`](https://github.com/FatturaFacile/web-api)** | Central Multi-Tenant Enterprise ERP Backend | **PHP 8.5**, **Laravel 13**, PostgreSQL 16+ / SQLite, Redis, Laravel Sanctum, Spatie Permission | Modular Clean Architecture / DDD across 37 modules in `modules/` (for example `02_CRM`, `05_Invoicing`, `06_SDI`, `13_Procurement`, `14_Inventory`, `22_GeneralLedger`, `24_Treasury`), `/api/v1` REST API, row-level multi-tenancy (`TenantScope`), transactional Outbox pattern, SHA-256 audit ledger, TOTP 2FA, OpenID Connect SSO and SCIM, and an OpenAPI 3.1 specification. Module maturity varies. Default branch for development: `dev`. |
-| **[`web-frontend/`](https://github.com/FatturaFacile/web-frontend)** | Web ERP Single-Page Application (the main client; powers the [demo](https://demo.fatturafacile.eu)) | **Angular 22**, **TypeScript 6.0**, **NG-ZORRO** (Ant Design), `@ngrx/signals`, RxJS, Less/SCSS | 100% Standalone components, OnPush change detection, native control flow (`@if`, `@for`), dual-jurisdiction toggle (IT/CH), quad-lingual i18n (`it`, `en`, `de`, `fr`), Swiss QR-Bill generator, Italian SDI transmission tracking, dual ledger (Libro Giornale / Swiss KMU) and a PWA service worker. Development branch: `dev`. |
+| **[`web-api/`](https://github.com/FatturaFacile/web-api)** | Central Multi-Tenant Enterprise ERP Backend | **PHP 8.6**, **Laravel 13**, PostgreSQL 16+ / SQLite, Redis, Laravel Sanctum, Spatie Permission | Modular Clean Architecture / DDD across more than 100 module folders in `modules/` (for example `02_CRM`, `05_Invoicing`, `06_SDI`, `13_Procurement`, `14_Inventory`, `22_GeneralLedger`, `24_Treasury`), `/api/v1` REST API, row-level multi-tenancy (`TenantScope`), transactional Outbox pattern, SHA-256 audit ledger, TOTP 2FA, OpenID Connect SSO and SCIM, and an OpenAPI 3.1 specification. Module maturity varies. Default branch: `dev`. |
+| **[`web-frontend/`](https://github.com/FatturaFacile/web-frontend)** | Web ERP Single-Page Application (the main client; powers the [demo](https://demo.fatturafacile.eu)) | **Angular 22**, **TypeScript 6.0**, **NG-ZORRO** (Ant Design), `@ngrx/signals`, RxJS, Less/SCSS | 100% Standalone components, OnPush change detection, native control flow (`@if`, `@for`), dual-jurisdiction toggle (IT/CH), quad-lingual i18n (`it`, `en`, `de`, `fr`), Swiss QR-Bill generator, Italian SDI transmission tracking, dual ledger (Libro Giornale / Swiss KMU) and a PWA service worker. Default branch: `dev`. |
 | **[`web-frontend-inglorious/`](https://github.com/FatturaFacile/web-frontend-inglorious)** | Lightweight ECS-Based Web ERP Client (experimental alternative to `web-frontend`) | **Inglorious Web**, **TypeScript**, **lit-html**, **Vite**, `@inglorious/store`, `@inglorious/ui` | High-performance alternative client built on Entity-Component-System (ECS) principles; port of the Angular client that uses the same backend API and translations while shipping about a fifth of the initial JavaScript/CSS (see its `BENCHMARKS.md`). |
 | **[`desktop/`](https://github.com/FatturaFacile/desktop)** | Offline-First Windows ERP (in development) | **.NET 11** (C# Preview), **WPF**, **SQLite**, Entity Framework Core 11, Syncfusion WPF (`FluentDark`), CommunityToolkit.Mvvm | Strict Clean Architecture with **ZERO Tactical DDD Mandate** (pure POCO entities, MediatR CQRS handlers, localized Country Strategies for CH/IT), row-level SQLite multi-tenancy, Windows Hello biometric/PIN authentication (`UserConsentVerifier`), AES-GCM field encryption via DPAPI, Inno Setup installer, and offline-first data sovereignty. |
 | **[`mobile/`](https://github.com/FatturaFacile/mobile)** | Cross-Platform Mobile Companion (early stage) | **Flutter** (SDK `>=3.13.5`), **Dart**, Material Design 3, Cupertino UI | Flutter scaffold for iOS and Android. Planned: field invoicing, digital signatures on service reports (*rapportini*), offline caching, receipt scanning and time tracking. These are not implemented yet. |
 | **[`database/`](https://github.com/FatturaFacile/database)** | Enterprise Relational Database Schema & Models | **PostgreSQL 16+**, **MySQL**, **SQLite**, ANSI SQL DDL | Authoritative relational model defining **416 tables** and over 1,000 foreign keys across 17 architectural domains, topological order for direct DBeaver ER diagram import, UUIDv7 primary keys, tenant scoping matrix (`tenant_id`), composite uniqueness rules, and fiscal deletion policies (`ON DELETE RESTRICT`). |
-| **[`website/`](https://github.com/FatturaFacile/website)** | Official Showcase & Institutional Hub | **Astro**, **HTML5 Semantic**, **Tailwind CSS**, TypeScript, Vanilla JavaScript | Static site powering [fatturafacile.eu](https://fatturafacile.eu): quad-lingual (`it`, `en`, `de`, `fr`), dark/light mode, module list with status (available / in development / planned), Schema.org JSON-LD. Pull requests go to `main`. |
-| **[`assets/`](https://github.com/FatturaFacile/assets)** | Official Brand Identity & Media Kit | **SVG Vector**, **PNG** (1x–4x), **Design Tokens**, Inter & Merriweather Fonts | Master brand repository containing logos, app icons, technology badges, color palette guidelines (Primary Navy `#0F172A`, Accent Emerald `#10B981`), UI screenshots, presentation slide decks (`docs/`), and CC BY 4.0 media licensing. |
-| **[`mcp-server/`](https://github.com/FatturaFacile/mcp-server)** | Model Context Protocol server for the API (planned) | n/a | Created 2026-11-16 (renamed from `fatturafacile-mcp-server`); placeholder, no code yet. |
-| **[`integrations/`](https://github.com/FatturaFacile/integrations)** | Third-party integrations (planned) | n/a | Created 2026-11-16 (renamed from `fatturafacile-integrations`); placeholder, no code yet. |
-| **[`openapi-sdk/`](https://github.com/FatturaFacile/openapi-sdk)** | Client SDKs generated from the OpenAPI spec (planned) | n/a | Created 2026-11-16 (renamed from `fatturafacile-openapi-sdk`); placeholder, no code yet. |
+| **[`website/`](https://github.com/FatturaFacile/website)** | Official Showcase & Institutional Hub | **Astro 7**, **Tailwind CSS 4**, TypeScript | Static site powering [fatturafacile.eu](https://fatturafacile.eu): quad-lingual (`it`, `en`, `de`, `fr`), dark/light mode, module list with status (available / in development / planned), Schema.org JSON-LD. Default branch: `dev`; production is published from `main`. |
+| **[`assets/`](https://github.com/FatturaFacile/assets)** | Official Brand Identity & Media Kit | **SVG Vector**, **PNG** (1x–4x), **Design Tokens**, Inter & Merriweather Fonts | Master brand repository containing logos, app icons, fonts, color palette guidelines (Primary Navy `#0F172A`, Accent Emerald `#10B981`) and the project presentation (`docs/`). Default branch: `dev`. |
+| **[`mcp-server/`](https://github.com/FatturaFacile/mcp-server)** | Model Context Protocol server for the API (early stage) | **Node.js 22**, **TypeScript**, MCP SDK, Zod, Redis (optional) | Tools, resources, prompts and workflows over the API; stdio and HTTP transports; some services still return sample data. Default branch: `dev`. |
+| **[`integrations/`](https://github.com/FatturaFacile/integrations)** | Third-party connectors (early stage) | **TypeScript**, **pnpm** + **Turborepo** monorepo, Vitest | A shared framework and about ten connectors with working code (e-commerce, CMS, payments, productivity, MCP and agent tools); the rest are scaffolds. Default branch: `dev`. |
+| **[`openapi-sdk/`](https://github.com/FatturaFacile/openapi-sdk)** | OpenAPI 3.1 specification and generated client SDKs (early stage) | **OpenAPI 3.1**, Redocly, **TypeScript** generators | Specification for 14 API domains, Zod and JSON Schema validators, API collections (Postman, Insomnia, Bruno, Hoppscotch), MCP tool metadata and SDKs in 7 languages. Default branch: `dev`. |
 | **[`awesome-italia-opensource/`](https://github.com/FatturaFacile/awesome-italia-opensource)** | Fork of the [Italia Open-Source](https://github.com/italia-opensource/awesome-italia-opensource) awesome lists | Markdown | Used to list FatturaFacile among Italian open-source projects; not part of the product. |
 
 ---
@@ -163,10 +163,10 @@ sequenceDiagram
 
 ## 🚀 Getting Started
 
-Each component can be developed and run independently. `web-api` and `web-frontend` use `dev` as the integration branch (pull requests target `dev`; production is released from `main` with `vX.Y.Z` tags), so clone and check out `dev` for local work. The other repositories use `main`.
+Each component can be developed and run independently. All product repositories use `dev` as the default and integration branch (pull requests target `dev`; `main` only receives pull requests from `dev` and is used for production releases, with `vX.Y.Z` tags where releases exist), so clone and check out `dev` for local work. `FatturaFacile` (this repository), `.github` and `awesome-italia-opensource` use `main`.
 
 ### 1. Central API Backend (`web-api`)
-Requires **PHP 8.5+**, **Composer 2.6+**, and **PostgreSQL 16+** (or SQLite for fast testing):
+Requires **PHP 8.6+**, **Composer 2.6+**, and **PostgreSQL 16+** (or SQLite for fast testing):
 ```bash
 git clone -b dev https://github.com/FatturaFacile/web-api.git
 cd web-api
@@ -188,7 +188,7 @@ php artisan serve
 ```
 
 ### 2. Angular Enterprise Web Client (`web-frontend`)
-Requires **Node.js 22+**, **pnpm 10+** (the repo pins `pnpm@12.18.0` through `packageManager`) and [mkcert](https://github.com/FiloSottile/mkcert). The app expects a running `web-api`:
+Requires **Node.js 22+**, **pnpm 10+** (the repo pins `pnpm@12.23.0` through `packageManager`) and [mkcert](https://github.com/FiloSottile/mkcert). The app expects a running `web-api`:
 ```bash
 git clone -b dev https://github.com/FatturaFacile/web-frontend.git
 cd web-frontend
@@ -205,7 +205,7 @@ pnpm run start:local
 ### 3. Inglorious Web Client (`web-frontend-inglorious`)
 Requires **Node.js 26+** and **pnpm 12+**. It talks to the same `web-api`:
 ```bash
-git clone https://github.com/FatturaFacile/web-frontend-inglorious.git
+git clone -b dev https://github.com/FatturaFacile/web-frontend-inglorious.git
 cd web-frontend-inglorious
 pnpm install
 pnpm dev
@@ -215,7 +215,7 @@ pnpm dev
 ### 4. Desktop Client (`desktop`, in development)
 Requires **Windows 10/11** and **.NET 11 SDK**:
 ```powershell
-git clone https://github.com/FatturaFacile/desktop.git
+git clone -b dev https://github.com/FatturaFacile/desktop.git
 cd desktop
 dotnet restore FatturaFacile.slnx
 dotnet build FatturaFacile.slnx
@@ -225,8 +225,8 @@ dotnet run --project src/FatturaFacile.Wpf/FatturaFacile.Wpf.csproj
 ### 5. Mobile Application (`mobile`, early stage)
 Requires **Flutter SDK 3.13.5+** and platform toolchains (Android Studio / Xcode):
 ```bash
-git clone https://github.com/FatturaFacile/mobile.git
-cd mobile/src
+git clone -b dev https://github.com/FatturaFacile/mobile.git
+cd mobile
 flutter pub get
 flutter analyze
 flutter test
@@ -236,14 +236,21 @@ flutter run
 ### 6. Showcase Website (`website`)
 Requires **Node.js 22.23+**:
 ```bash
-git clone https://github.com/FatturaFacile/website.git
+git clone -b dev https://github.com/FatturaFacile/website.git
 cd website
 npm ci
 npm run dev
 # Opens at http://localhost:4321
 ```
 
-`mcp-server`, `integrations` and `openapi-sdk` have no code yet, so there is nothing to run.
+### 7. Developer tooling (`mcp-server`, `integrations`, `openapi-sdk`)
+These three are Node.js (22+) and pnpm projects; each README has the exact commands:
+```bash
+git clone -b dev https://github.com/FatturaFacile/mcp-server.git   # or integrations, or openapi-sdk
+cd mcp-server
+pnpm install --frozen-lockfile
+pnpm test
+```
 
 ---
 
@@ -254,9 +261,10 @@ Technical documentation lives next to the code in each repository:
 - **[`web-api` architecture](https://github.com/FatturaFacile/web-api/blob/dev/ARCHITECTURE.md) and [`docs/`](https://github.com/FatturaFacile/web-api/tree/dev/docs):** module layout, multi-tenancy, API specification and the OpenAPI/Postman files in `docs/api/`.
 - **[API reference](https://api.fatturafacile.eu/docs):** interactive OpenAPI documentation (raw spec: [api-docs.json](https://api.fatturafacile.eu/docs/api-docs.json)).
 - **[`web-frontend/docs`](https://github.com/FatturaFacile/web-frontend/tree/dev/docs):** frontend architecture and conventions.
-- **[Database Architecture & Schema Index](https://github.com/FatturaFacile/database/blob/main/README.md):** multi-tenancy isolation, UUIDv7 conventions, schema catalog and ER diagram.
-- **[Brand Style Guide & Assets](https://github.com/FatturaFacile/assets/blob/main/README.md):** color palette, typography and media usage.
+- **[Database Architecture & Schema Index](https://github.com/FatturaFacile/database/blob/dev/README.md):** multi-tenancy isolation, UUIDv7 conventions, schema catalog and ER diagram.
+- **[Brand Style Guide & Assets](https://github.com/FatturaFacile/assets/blob/dev/README.md):** color palette, typography and media usage.
 - **[Service status](https://status.fatturafacile.eu):** uptime of the public services.
+- **[Project wiki](https://github.com/FatturaFacile/FatturaFacile/wiki):** shared project documentation.
 
 ---
 
@@ -313,7 +321,7 @@ We warmly welcome community involvement, issue reports, localization additions, 
 
 ### How to Contribute
 1. **Read the repository docs:** check the README and architecture/coding-standards files of the repository you want to change for testing expectations and coding styles.
-2. **Fork & Branch:** Create a topical feature or fix branch from `dev` (`web-api`, `web-frontend`) or `main` (other repositories):
+2. **Fork & Branch:** Create a topical feature or fix branch from `dev` (all product repositories) or `main` (`FatturaFacile`, `.github`, `awesome-italia-opensource`):
    ```bash
    git checkout -b feat/swiss-qr-scor-validator
    ```
@@ -358,7 +366,7 @@ The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 ```
 
-*(Note: Brand vector marks and graphical assets in [`assets/`](https://github.com/FatturaFacile/assets) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), and embedded fonts retain their respective SIL Open Font License 1.1).*
+*(Note: Brand vector marks and graphical assets in [`assets/`](https://github.com/FatturaFacile/assets) come with usage rules described in that repository, and embedded fonts retain their SIL Open Font License 1.1).*
 
 ---
 
